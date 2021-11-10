@@ -1,0 +1,16 @@
+{
+  "name": "pawsome",
+  "version": "1.0.0",
+  "description": "PHP website for Data Management Systems",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --style=compressed css/style/main.scss css/main.css",
+    "watch:sass": "npm run sass -- --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jan Deschacht",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.43.4"
+  }
+}

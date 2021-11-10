@@ -1,0 +1,19 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 1rem;
+    color: $black;
+    background-color: $white;
+}
+
+main {
+    max-width: 80rem;
+    margin: auto;
+}
+
+img {
+    max-width: 100%;
+}

@@ -1,0 +1,30 @@
+//Colours
+$primary: #562009;
+$secondary: #F4EBE1;
+$black: #111111;
+$white: #FFFFFF;
+$shadow: #1111112B;
+
+// A map of breakpoints.
+$breakpoints: (
+  // 448px
+  xxs: 28rem,
+  // 576px
+  xs: 36rem,
+  // 624px
+  xss: 39rem,
+  // 688px
+  ss: 43rem,
+  // 800px
+  sm: 50rem,
+  // 1024px
+  md: 60rem,
+  // 1200px
+  lg: 75rem,
+  // 1280px
+  full: 80rem,
+  // 1360px
+  fullPlus: 90rem,
+  // 1360px
+  fullPlusPlus: 120rem
+);

@@ -1,0 +1,32 @@
+nav {
+   
+    ul {
+        display: flex;
+
+        li {
+            display: flex;
+            
+            a {
+                display: flex;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                @include transition;
+                
+                svg {
+                    color: $primary;
+                    max-width: 1.75rem;
+                    max-height: 1.5rem;
+                    transform: scale(1) translateY(0);
+                    @include transition;
+                }
+
+                &:hover {
+
+                    svg {
+                        transform: scale(1.15) translateY(-3px);
+                    }
+                }
+            }
+        }
+    }
+}
