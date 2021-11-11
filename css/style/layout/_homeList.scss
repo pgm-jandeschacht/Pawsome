@@ -1,0 +1,116 @@
+.posts__list {
+    max-width: 37.5rem;
+
+    &__item {
+        margin-bottom: 1.5rem;
+        background-color: $ternary;
+        border-radius: 3px;
+        // box-shadow: 0 1px 2px $shadow;
+        border: 1px solid $accent;
+
+        .author__container {
+            padding: 1.5rem;
+            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__date {
+                color: $primary;
+                font-weight: 600;
+            }
+            
+            &__user {
+                display: flex;
+                align-items: center;
+
+                &__img {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    margin-right: 1rem;
+                    
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &__name {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        &__container {
+            height: 0;
+            overflow: hidden;
+            padding-top: 100%;
+            position: relative;
+
+            &__img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &__content {
+            padding: 1.5rem;
+            padding-top: 1rem;
+
+            .likes-breed {
+                padding-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span {
+                    color: $primary;
+                }
+
+                .breed {
+                    color: $primary;
+                }
+            }
+
+            .description {
+                padding-bottom: 0.75rem;
+
+                p {
+                    span {
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+
+            .comments {
+                p {
+                    color: $grey;
+                    margin-bottom: 0.5rem;
+                }
+                
+                &__list {
+    
+                    &__item {
+                        margin-bottom: 0.3rem;
+    
+                        span {
+                            margin-right: 0.5rem;
+                        }
+    
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
