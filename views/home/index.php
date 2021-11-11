@@ -1,4 +1,4 @@
-<div class="home max-width">
+<div class="home">
     <ul class="posts__list">
         <li class="posts__list__item">
             <div class="author__container">
@@ -66,7 +66,7 @@
                 <div class="likes-breed">
                     <p>Liked by <span class="bold">69</span> people</p>
 
-                    <p class="breed bold">German Shephard</p>
+                    <p class="likes-breed__breed bold">German Shephard</p>
                 </div>
 
                 <div class="description">

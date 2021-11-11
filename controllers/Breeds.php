@@ -1,6 +1,6 @@
 <?php
 
-class BreedController extends BaseController {
+class BreedsController extends BaseController {
 
     protected function index () {
         // $this->viewParams['post'] = Post::getAll();

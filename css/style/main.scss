@@ -20,12 +20,13 @@
 @import
   'components/header',
   'components/navigation',
-  'components/footer';
+  'components/footer',
+  'components/homeList';
     
 // 5. Layout-related sections
 @import
-  'layout/home',
-  'layout/homeList';
+  'layout/breeds',
+  'layout/home';
 
 // 6. Page-specific styles
 @import

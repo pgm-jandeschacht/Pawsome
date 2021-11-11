@@ -1,0 +1,136 @@
+.breeds {
+    padding: 1.5rem;
+    background: $ternary;
+    border-radius: 3px;
+    border: 1px solid $accent;
+
+    h1 {
+        font-size: 2.5rem;
+        padding-top: 1rem;
+    }
+
+    &__search {
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        display: flex;
+            
+            input {
+                width: 100%;
+                border-radius: 3px 0 0 3px;
+                background-color: $white;
+                border: 2px solid $primary;
+                padding: 0.2rem 1rem;
+                font-size: 1.2rem;
+                font-weight: 500;
+                @include transition;
+                
+                &:focus {
+                    transform: translateY(-3px);
+                    box-shadow: 0 2px 5px $shadow;
+                    
+                    & + button {
+                        transform: translateY(-3px);
+                        box-shadow: 0 2px 5px $shadow;
+                }
+            }
+        }
+
+        button {
+            background: $primary;
+            padding: 0.5rem 2rem;
+            border-radius: 0 3px 3px 0;
+            @include transition;
+            
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                color: $white;
+            }
+
+            &:hover {
+                background-color: $secondary;
+
+                svg {
+                    color: $primary;
+                }
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+
+        &__item {
+            margin-right: 0.75rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            width: calc(25% - 0.5625rem);
+            height: 0;
+            overflow: hidden;
+            padding-top: calc(25% - 0.5625rem);
+            position: relative;
+            border-radius: 3px;
+            @include transition;
+
+            &:hover {
+                transform: scale(1.03) translateY(-5px);
+            }
+
+            &:nth-of-type(4n) {
+                margin-right: 0;
+            }
+
+            &__breed {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 30%;
+                opacity: 0;
+                left: 0;
+                color: $white;
+                font-weight: 500;
+                font-size: 1.5rem;
+                @include transition;
+            }
+            
+            &__link {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+
+                    div {
+                        top: 0;
+                        opacity: 1;
+                    }
+                }
+                
+                &::before {
+                    background: #000;
+                    opacity: 0;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    height: 100%;
+                    position: absolute;
+                    width: 100%;
+                    @include transition;
+                }
+                
+                &:hover::before {
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+}
