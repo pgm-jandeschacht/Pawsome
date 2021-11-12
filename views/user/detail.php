@@ -1,7 +1,7 @@
 <div class="user max-width">
     <div class="user__info">
         <div class="user__info__log-off">
-            <a href="/">
+            <a href="/logout">
                 Log off
             <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496" xml:space="preserve"><path d="M248 0C111 0 0 111 0 248s111 248 248 248 248-111 248-248S385 0 248 0z"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496" xml:space="preserve"><path d="M248 0C111 0 0 111 0 248s111 248 248 248 248-111 248-248S385 0 248 0z"/></svg>

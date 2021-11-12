@@ -2,10 +2,12 @@
 
 class UserController extends BaseController {
 
-    protected function detail ($params) {
-        $this->viewParams['user'] = User::getById($params[0]);
+    protected function detail () {
+        $param = $_SESSION['user_id'];
 
-        $this->viewParams['posts'] = User::getJoined2ById($params[0]);
+        $this->viewParams['user'] = User::getById($param);
+
+        $this->viewParams['posts'] = User::getJoined2ById($param);
 
         $this->loadView();
     }
@@ -15,5 +17,4 @@ class UserController extends BaseController {
 
         $this->loadView();
     }
-
 }

@@ -7,6 +7,8 @@ class BaseModel {
     protected $fk1;
     protected $table2;
     protected $fk2;
+    protected $table3;
+    protected $fk3;
     
     public static function __callStatic ($method, $arg) {
         $obj = new static;
@@ -48,7 +50,7 @@ class BaseModel {
     private function getJoined2() {
         global $db;
 
-        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->fk1 . '` = `' . $this->table2 . '`.`' . $this->fk2 . '`';
+        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->fk1 . '` = `' . $this->table2 . '`.`' . $this->fk2 . '` ORDER BY `' . $this->table . '`.`created_on` DESC';
         $pdo_statement = $db->prepare($sql);
         $pdo_statement->execute();
 
@@ -58,6 +60,28 @@ class BaseModel {
         foreach($db_items as $db_item) {
             $items[] = $this->castDbObjectToModel($db_item);
         }
+
+        return $items;
+    }
+
+    private function getJoined3() {
+        global $db;
+
+        $sql = 'SELECT * FROM `' . $this->table . '` 
+                INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->fk2 . '` = `' . $this->table2 . '`.`' . $this->pk . '` 
+                INNER JOIN `' . $this->table3 . '` ON `' . $this->table . '`.`' . $this->fk3 . '` = `' . $this->table3 . '`.`' . $this->pk . '` 
+                ORDER BY `' . $this->table . '`.`created_on` ASC';
+        $pdo_statement = $db->prepare($sql);
+        $pdo_statement->execute();
+
+        $db_items = $pdo_statement->fetchAll(); 
+        $items = [] ;
+
+        foreach($db_items as $db_item) {
+            $items[] = $this->castDbObjectToModel($db_item);
+        }
+
+        var_dump($sql);
 
         return $items;
     }

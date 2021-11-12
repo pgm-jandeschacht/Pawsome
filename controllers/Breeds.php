@@ -3,10 +3,8 @@
 class BreedsController extends BaseController {
 
     protected function index () {
-
-        $url = $_SERVER['QUERY_STRING'];
-        $exploded = explode("=", $url);        
-        $param = $exploded[2] ?? '';
+       
+        $param = $_GET['search_breeds'] ?? '';
         
         $this->viewParams['breeds'] = Breed::getSearch($param);
         $this->viewParams['param'] = Breed::getSearchValue($param);

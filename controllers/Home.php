@@ -3,7 +3,7 @@
 class HomeController extends BaseController {
 
     protected function index ($params) {
-        $this->viewParams['posts'] = Post::getJoined2();
+        $this->viewParams['posts'] = Post::getJoined3();
 
         // $this->viewParams['user'] = User::getById($params[0]);
 
