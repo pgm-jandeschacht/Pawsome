@@ -4,7 +4,10 @@ class BaseModel {
 
     protected $table;
     protected $pk;
-
+    protected $fk1;
+    protected $table2;
+    protected $fk2;
+    
     public static function __callStatic ($method, $arg) {
         $obj = new static;
         $result = call_user_func_array (array ($obj, $method), $arg);
@@ -42,7 +45,41 @@ class BaseModel {
         return $this->castDbObjectToModel($db_item);
     }
 
-    private function castDbObjectToModel ($db_item) {
+    private function getJoined2() {
+        global $db;
+
+        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->fk1 . '` = `' . $this->table2 . '`.`' . $this->fk2 . '`';
+        $pdo_statement = $db->prepare($sql);
+        $pdo_statement->execute();
+
+        $db_items = $pdo_statement->fetchAll(); 
+        $items = [] ;
+
+        foreach($db_items as $db_item) {
+            $items[] = $this->castDbObjectToModel($db_item);
+        }
+
+        return $items;
+    }
+
+    private function getJoined2ById( int $id ) {
+        global $db;
+
+        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->pk . '` = `' . $this->table2 . '`.`' . $this->fk2 . '` WHERE `' . $this->table . '`.`' . $this->pk . '` = :p_id';
+        $pdo_statement = $db->prepare($sql);
+        $pdo_statement->execute( [ ':p_id' => $id ] );
+
+        $db_items = $pdo_statement->fetchAll();
+        $items = [] ;
+
+        foreach($db_items as $db_item) {
+            $items[] = $this->castDbObjectToModel($db_item);
+        }
+
+        return $items;
+    }
+
+    public function castDbObjectToModel ($db_item) {
 
         $db_item = (object) $db_item;
         //Creates new Model

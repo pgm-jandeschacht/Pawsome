@@ -3,6 +3,9 @@
     if(isset($_SERVER['HTTP_REFERER'])) {
         $previous = $_SERVER['HTTP_REFERER'];
     }
+
+    $items = scandir('./images');
+    var_dump($items)
 ?>
 
 <div class="add max-width">

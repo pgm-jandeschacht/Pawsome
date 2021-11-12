@@ -23,6 +23,8 @@ if(isset($route[0]) && $route[0] != '') {
 
 } 
 
+$pieces = explode('?', $controller);
+$controller = $pieces[0];
 $controller_path =  BASE_DIR . '/controllers/' . $controller . '.php';
 if(!file_exists($controller_path)) {
     echo 'TODO: 404 inladen';

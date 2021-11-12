@@ -20,4 +20,10 @@ class PostController extends BaseController {
         $this->loadView();
     }
 
+    protected function detail () {
+        // $this->viewParams['post'] = Post::getAll();
+
+        $this->loadView();
+    }
+
 }

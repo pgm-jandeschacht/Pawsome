@@ -1,172 +1,58 @@
 <div class="home">
     <ul class="posts__list">
-        <li class="posts__list__item">
-            <div class="author__container">
-                <div class="author__container__user">
-                    <span class="author__container__user__img">
-                        <img src="/images/defaults/ben_den_engelsen.jpg" alt="">
-                    </span>
-                    
-                    <p class="author__container__user__name bold">Ben Den Engelsen</p>
+
+    <?php
+        foreach($posts as $post) {
+            $date = $post->created_on;
+            $dateTime = explode(" ", $date);
+            $newDate = date("d/m/Y", strtotime($dateTime[0]));
+            ?>
+
+            <li class="posts__list__item">
+                <div class="author__container">
+                    <div class="author__container__user">
+                        <span class="author__container__user__img">
+                            <img src="/images/profilePictures/<?= $post->profilePic; ?>" alt="Picture of <?= $post->firstname; ?> <?= $post->lastname; ?>">
+                        </span>
+                        
+                        <p class="author__container__user__name bold"><?= $post->firstname; ?> <?= $post->lastname; ?></p>
+                    </div>
+
+                    <p class="author__container__date"><?= $newDate; ?></p>
                 </div>
 
-                <p class="author__container__date">9/11/2021</p>
-            </div>
-
-            <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
-            <div class="posts__list__item__container">
-                <div class="posts__list__item__container__img">
-                    <img src="/images/defaults/german_shepard.jpg" alt="">
+                <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
+                <div class="posts__list__item__container">
+                    <div class="posts__list__item__container__img">
+                        <img src="/images/posts/<?= $post->media; ?>" alt="Picture of">
+                    </div>
                 </div>
-            </div>
-            
-            <div class="posts__list__item__content">
-                <div class="likes-breed">
-                    <p>Liked by <span class="bold">69</span> people</p>
+                
+                <div class="posts__list__item__content">
+                    <div class="likes-breed">
+                        <p>Liked by <span class="bold">69</span> people</p>
 
-                    <p class="breed bold">German Shephard</p>
+                        <p class="breed bold">German Shephard</p>
+                    </div>
+
+                    <div class="description">
+                        <p><span class="bold"><?= $post->firstname; ?> <?= $post->lastname; ?></span><?= $post->description; ?></p>
+                    </div>
+
+                    <div class="comments">
+                        <p>View all comments</p>    
+
+                        <ul class="comments__list">
+                            <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
+                            <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
+                        </ul>
+                    </div>
                 </div>
+            </li>
 
-                <div class="description">
-                    <p><span class="bold">Ben Den Engelsen</span>This is my big doggo Bitchlover. He is a 35 years old german shepard and very lovable!</p>
-                </div>
-
-                <div class="comments">
-                    <p>View all comments</p>    
-
-                    <ul class="comments__list">
-                        <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
-                        <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-
-        <li class="posts__list__item">
-            <div class="author__container">
-                <div class="author__container__user">
-                    <span class="author__container__user__img">
-                        <img src="/images/defaults/ben_den_engelsen.jpg" alt="">
-                    </span>
-                    
-                    <p class="author__container__user__name bold">Ben Den Engelsen</p>
-                </div>
-
-                <p class="author__container__date">9/11/2021</p>
-            </div>
-
-            <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
-            <div class="posts__list__item__container">
-                <div class="posts__list__item__container__img">
-                    <img src="/images/defaults/german_shepard.jpg" alt="">
-                </div>
-            </div>
-            
-            <div class="posts__list__item__content">
-                <div class="likes-breed">
-                    <p>Liked by <span class="bold">69</span> people</p>
-
-                    <p class="likes-breed__breed bold">German Shephard</p>
-                </div>
-
-                <div class="description">
-                    <p><span class="bold">Ben Den Engelsen</span>This is my big doggo Bitchlover. He is a 35 years old german shepard and very lovable!</p>
-                </div>
-
-                <div class="comments">
-                    <p>View all comments</p>    
-
-                    <ul class="comments__list">
-                        <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
-                        <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-
-        <li class="posts__list__item">
-            <div class="author__container">
-                <div class="author__container__user">
-                    <span class="author__container__user__img">
-                        <img src="/images/defaults/ben_den_engelsen.jpg" alt="">
-                    </span>
-                    
-                    <p class="author__container__user__name bold">Ben Den Engelsen</p>
-                </div>
-
-                <p class="author__container__date">9/11/2021</p>
-            </div>
-
-            <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
-            <div class="posts__list__item__container">
-                <div class="posts__list__item__container__img">
-                    <img src="/images/defaults/german_shepard.jpg" alt="">
-                </div>
-            </div>
-            
-            <div class="posts__list__item__content">
-                <div class="likes-breed">
-                    <p>Liked by <span class="bold">69</span> people</p>
-
-                    <p class="breed bold">German Shephard</p>
-                </div>
-
-                <div class="description">
-                    <p><span class="bold">Ben Den Engelsen</span>This is my big doggo Bitchlover. He is a 35 years old german shepard and very lovable!</p>
-                </div>
-
-                <div class="comments">
-                    <p>View all comments</p>    
-
-                    <ul class="comments__list">
-                        <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
-                        <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-
-        <li class="posts__list__item">
-            <div class="author__container">
-                <div class="author__container__user">
-                    <span class="author__container__user__img">
-                        <img src="/images/defaults/ben_den_engelsen.jpg" alt="">
-                    </span>
-                    
-                    <p class="author__container__user__name bold">Ben Den Engelsen</p>
-                </div>
-
-                <p class="author__container__date">9/11/2021</p>
-            </div>
-
-            <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
-            <div class="posts__list__item__container">
-                <div class="posts__list__item__container__img">
-                    <img src="/images/defaults/german_shepard.jpg" alt="">
-                </div>
-            </div>
-            
-            <div class="posts__list__item__content">
-                <div class="likes-breed">
-                    <p>Liked by <span class="bold">69</span> people</p>
-
-                    <p class="breed bold">German Shephard</p>
-                </div>
-
-                <div class="description">
-                    <p><span class="bold">Ben Den Engelsen</span>This is my big doggo Bitchlover. He is a 35 years old german shepard and very lovable!</p>
-                </div>
-
-                <div class="comments">
-                    <p>View all comments</p>    
-
-                    <ul class="comments__list">
-                        <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
-                        <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
+            <?php
+        }
+    ?>
     </ul>
 
     <div class="user__information">
