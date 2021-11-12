@@ -3,16 +3,20 @@
 
     <?php
         foreach($posts as $post) {
+            // var_dump($comments);
             $date = $post->created_on;
             $dateTime = explode(" ", $date);
             $newDate = date("d/m/Y", strtotime($dateTime[0]));
-            ?>
 
+            $post_id = $post->post_id;
+            $user_id = $post->user_id;
+            ?>
+            
             <li class="posts__list__item">
                 <div class="author__container">
                     <div class="author__container__user">
                         <span class="author__container__user__img">
-                            <img src="/images/profilePictures/<?= $post->profilePic; ?>" alt="Picture of <?= $post->firstname; ?> <?= $post->lastname; ?>">
+                            <img src="/images/profilePictures/<?= $post->img; ?>" alt="Picture of <?= $post->firstname; ?> <?= $post->lastname; ?>">
                         </span>
                         
                         <p class="author__container__user__name bold"><?= $post->firstname; ?> <?= $post->lastname; ?></p>
@@ -24,7 +28,7 @@
                 <!-- aspect ratio of 1/1 or photo, 1/1 when there will be detail page of post  -->
                 <div class="posts__list__item__container">
                     <div class="posts__list__item__container__img">
-                        <img src="/images/posts/<?= $post->media; ?>" alt="Picture of">
+                        <img src="/images/posts/<?= $post->media; ?>" alt="Picture of dog">
                     </div>
                 </div>
                 
@@ -40,12 +44,31 @@
                     </div>
 
                     <div class="comments">
-                        <p>View all comments</p>    
+                        <p>Comments</p>    
 
                         <ul class="comments__list">
-                            <li class="comments__list__item"><span class="bold">Jos Vanstene</span>Wow great pic, what a cutie</li>
-                            <li class="comments__list__item"><span class="bold">Rudy Nievanstene</span>Love it!</li>
+                            <?php
+                                foreach($comments as $comment) {
+                                    if($comment->post_id === $post_id) {
+                                        ?>
+                                        <li class="comments__list__item"><span class="bold"><?= $comment->firstname; ?> <?= $comment->lastname; ?></span><?= $comment->comment; ?></li>
+                                        <?php
+                                    } else {
+
+                                    }
+                                }
+                            ?>
                         </ul>
+
+                        <form method="POST">
+                            <label for="">
+                                <input type="text" name="comment" placeholder="Write a comment">
+                            </label>
+                            <label for="">
+                                <input type="hidden" name="post_id" value="<?= $post->post_id ?>">
+                            </label>
+                            <button type=submit name="create">Send</button>
+                        </form>
                     </div>
                 </div>
             </li>
@@ -59,51 +82,29 @@
         <div class="user__information__container">
             <div class="user__information__container__user">
                 <span class="user__img">
-                    <img src="/images/defaults/aster_flour.jpg" alt="">
+                    <img src="/images/profilePictures/<?= $user->img; ?>" alt="Picture of <?= $user->firstname; ?> <?= $user->lastname; ?>">
                 </span>
                 
-                <p class="user__name bold">Aster Flour</p>
+                <p class="user__name bold"><?= $user->firstname; ?> <?= $user->lastname; ?></p>
             </div>
 
             <div class="user__information__container__recent">
                 <p class="pictures__title">Recently added pictures</p>
 
                 <ul class="pictures__list">
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
+                    <?php 
+                        foreach($postsUser as $postUser) {
+                            ?>
 
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
-                    
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
+                            <li class="pictures__list__item">
+                                <div class="pictures__list__item__container">
+                                    <img src="/images/posts/<?= $postUser->media ?>" alt="Picture of dog">
+                                </div>
+                            </li>
 
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
-
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
-                    
-                    <li class="pictures__list__item">
-                        <div class="pictures__list__item__container">
-                            <img src="/images/defaults/german_shepard.jpg" alt="">
-                        </div>
-                    </li>
+                            <?php
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

@@ -3,7 +3,7 @@
 class Breed extends BaseModel {
 
     protected $table = 'breed';
-    protected $pk = 'id';
+    protected $pk = 'breed_id';
 
     protected function getSearch( $search ) {
         global $db;

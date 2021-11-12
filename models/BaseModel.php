@@ -9,6 +9,9 @@ class BaseModel {
     protected $fk2;
     protected $table3;
     protected $fk3;
+    protected $table4;
+    protected $fk4;
+    protected $limit;
     
     public static function __callStatic ($method, $arg) {
         $obj = new static;
@@ -38,7 +41,7 @@ class BaseModel {
     private function getById( int $id ) {
         global $db;
 
-        $sql = 'SELECT * FROM `' . $this->table . '` WHERE `' . $this->pk . '` = :p_id';
+        $sql = 'SELECT * FROM `' . $this->table . '` WHERE `user_id` = :p_id';
         $pdo_statement = $db->prepare($sql);
         $pdo_statement->execute( [ ':p_id' => $id ] );
 
@@ -68,9 +71,9 @@ class BaseModel {
         global $db;
 
         $sql = 'SELECT * FROM `' . $this->table . '` 
-                INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->fk2 . '` = `' . $this->table2 . '`.`' . $this->pk . '` 
-                INNER JOIN `' . $this->table3 . '` ON `' . $this->table . '`.`' . $this->fk3 . '` = `' . $this->table3 . '`.`' . $this->pk . '` 
-                ORDER BY `' . $this->table . '`.`created_on` ASC';
+                INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`user_id` = `' . $this->table2 . '`.`user_id` 
+                INNER JOIN `' . $this->table3 . '` ON `' . $this->table . '`.`breed_id` = `' . $this->table3 . '`.`breed_id` 
+                ORDER BY `' . $this->table . '`.`created_on` DESC';
         $pdo_statement = $db->prepare($sql);
         $pdo_statement->execute();
 
@@ -81,15 +84,30 @@ class BaseModel {
             $items[] = $this->castDbObjectToModel($db_item);
         }
 
-        var_dump($sql);
-
         return $items;
     }
 
     private function getJoined2ById( int $id ) {
         global $db;
 
-        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`' . $this->pk . '` = `' . $this->table2 . '`.`' . $this->fk2 . '` WHERE `' . $this->table . '`.`' . $this->pk . '` = :p_id';
+        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`user_id` = `' . $this->table2 . '`.`user_id` WHERE `' . $this->table . '`.`user_id` = :p_id';
+        $pdo_statement = $db->prepare($sql);
+        $pdo_statement->execute( [ ':p_id' => $id ] );
+
+        $db_items = $pdo_statement->fetchAll();
+        $items = [] ;
+
+        foreach($db_items as $db_item) {
+            $items[] = $this->castDbObjectToModel($db_item);
+        }
+
+        return $items;
+    }
+
+    private function getJoined2ByIdLimited( int $id ) {
+        global $db;
+
+        $sql = 'SELECT * FROM `' . $this->table . '` INNER JOIN `' . $this->table2 . '` ON `' . $this->table . '`.`user_id` = `' . $this->table2 . '`.`user_id` WHERE `' . $this->table . '`.`user_id` = :p_id LIMIT ' . $this->limit . '';
         $pdo_statement = $db->prepare($sql);
         $pdo_statement->execute( [ ':p_id' => $id ] );
 

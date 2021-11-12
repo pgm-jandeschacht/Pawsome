@@ -1,5 +1,5 @@
 <div class="search max-width">
-    <h1>Search Pawsome</h1>
+    <h1>Search posts by user</h1>
 
     <form class="search__form" action="">
         <input type="text" name="search" placeholder="Search Pawsome">

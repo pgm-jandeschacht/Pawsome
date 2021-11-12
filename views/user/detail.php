@@ -10,7 +10,7 @@
         </div>
 
         <div class="user__info__img">
-            <img src="/images/profilePictures/<?= $user->profilePic ?>" alt="Picture of <?= $user->firstname; ?> <?= $user->lastname; ?>">
+            <img src="/images/profilePictures/<?= $user->img ?>" alt="Picture of <?= $user->firstname; ?> <?= $user->lastname; ?>">
         </div>
 
         <div class="user__info__name">
@@ -26,7 +26,7 @@
                     ?>
 
                     <li class="user__posts__list__item">
-                        <a href="/post/detail/<?= $post->id ?>" class="user__posts__list__item__link">
+                        <a href="/post/detail/<?= $post->post_id ?>" class="user__posts__list__item__link">
                             <img src="/images/posts/<?= $post->media ?>" alt="">
                         </a>
                     </li>

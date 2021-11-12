@@ -39,7 +39,6 @@
             <label for="">
                 Select breed
                 <select required name="breed_id" id="">
-                    <option value="0">I don't know</option>
                     <?php 
                         foreach($breeds as $breed) {
                             ?>

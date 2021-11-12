@@ -7,6 +7,7 @@ class User extends BaseModel {
     protected $fk1 = '';
     protected $table2 = 'posts';
     protected $fk2 = 'user_id';
+    protected $limit = 6;
 
     protected function getLogin( $posted ) {
 
@@ -39,7 +40,7 @@ class User extends BaseModel {
         header('location: login');
     }
 
-    protected function getRegister( $posted, $check ) {
+    protected function getRegister( $posted, $check, $img ) {
         global $db;
 
         $values = [];
@@ -49,6 +50,7 @@ class User extends BaseModel {
             $values[':lastname'] = trim($posted['lastname']);
             $values[':email'] = trim($posted['email']);
             $values[':pwd'] = password_hash( $posted['password'], PASSWORD_DEFAULT );
+            $values[':img'] = $img;
 
             $valid = true;
 
@@ -87,13 +89,13 @@ class User extends BaseModel {
         global $db;
     
         foreach($values as $property => &$value) {
-            if($property != ':pwd') {
+            if($property != ':pwd' || $property != ':img') {
                 $value = htmlspecialchars($value);
             }
         }
     
-        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`)
-        VALUES (:firstname, :lastname, :email, :pwd)";
+        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `img`)
+        VALUES (:firstname, :lastname, :email, :pwd, :img)";
     
         $pdo_statement = $db->prepare($sql);
         $pdo_statement->execute( $values );
