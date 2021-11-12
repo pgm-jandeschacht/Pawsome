@@ -37,8 +37,4 @@ class Breed extends BaseModel {
 
         return $search;
     }
-
-    // public function getShortContent () {
-    //     return substr($this->content, 0, 100);
-    // }
 }

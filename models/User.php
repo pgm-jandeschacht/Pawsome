@@ -102,4 +102,37 @@ class User extends BaseModel {
     
         return $db->lastInsertId();
     }
+
+    protected function getSearchUsers( $param ) {
+        global $db;
+
+        $exec_var = [];
+
+        if($param !== '') {
+            $sql = 'SELECT * FROM `users` 
+                    INNER JOIN `posts` ON `users`.`user_id` = `posts`.`user_id` 
+                    WHERE `firstname` LIKE ?';
+
+            $exec_var[] = "%$param%";
+
+        } else {
+            $sql = 'SELECT * FROM `users`
+                    INNER JOIN `posts` ON `users`.`user_id` = `posts`.`user_id` ORDER BY `posts`.`created_on` DESC';
+        }
+
+        $pdo_statement = $db->prepare($sql);
+        $pdo_statement->execute($exec_var);
+
+        $db_items = $pdo_statement->fetchAll(); 
+        $items = [] ;
+
+        foreach($db_items as $db_item) {
+            $items[] = $this->castDbObjectToModel($db_item);
+        }
+
+        // var_dump($items);
+
+        return $items;
+    }
+
 }

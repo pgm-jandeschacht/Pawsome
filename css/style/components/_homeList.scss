@@ -111,6 +111,25 @@
                         }
                     }
                 }
+
+                &__form {
+                    margin-top: 1rem;
+
+                    input {
+                        padding: 0.2rem 1rem;
+                        font-size: 1.1rem;
+                        border-radius: 3px;
+                        border: 2px solid $primary;
+                    }
+
+                    button {
+                        background: $primary;
+                        color: $white;
+                        border-radius: 3px;
+                        padding: 0.2rem 1rem;
+                        font-size: 1.1rem;
+                    }
+                }
             }
         }
     }

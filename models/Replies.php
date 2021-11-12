@@ -17,7 +17,10 @@ class Replies extends BaseModel {
     
             $pdo_statement = $db->prepare($sql);
             $pdo_statement->execute( $values );
+            
+            header('location: /');
         }
     }
+
 
 }

@@ -60,7 +60,7 @@
                             ?>
                         </ul>
 
-                        <form method="POST">
+                        <form class="comments__form" method="POST">
                             <label for="">
                                 <input type="text" name="comment" placeholder="Write a comment">
                             </label>

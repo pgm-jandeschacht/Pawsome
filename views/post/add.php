@@ -28,21 +28,21 @@
             <label for="description">
                 <div class="add__form__right__user">
                     <span class="add__form__right__user__img">
-                        <img src="/images/defaults/aster_flour.jpg" alt="">
+                        <img src="/images/profilePictures/<?= $user->img; ?>" alt="Picture of <?= $user->firstname; ?> <?= $user->lastname; ?>">
                     </span>
                     
-                    <p class="add__form__right__user__name bold">Aster Flour</p>
+                    <p class="add__form__right__user__name bold"><?= $user->firstname; ?> <?= $user->lastname; ?></p>
                 </div>
 
                 <textarea required id="description" name="description" rows="8" placeholder="Add description here..."></textarea>
 
-            <label for="">
+            <label for="breeds_select">
                 Select breed
-                <select required name="breed_id" id="">
+                <select required name="breed_id" id="breeds_select">
                     <?php 
                         foreach($breeds as $breed) {
                             ?>
-                            <option value="<?= $breed->id; ?>"><?= $breed->name; ?></option>
+                            <option value="<?= $breed->breed_id; ?>"><?= $breed->name; ?></option>
                             <?php
                         }
                     ?>

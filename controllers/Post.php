@@ -1,6 +1,7 @@
 <?php
 
 class PostController extends BaseController {
+    protected $table = 'posts';
 
     protected function add () {
 
@@ -12,10 +13,10 @@ class PostController extends BaseController {
             $tmp_file = $_FILES['image_upload']['tmp_name'];
             $file_name = $_FILES['image_upload']['name'];
 
-            // var_dump($tmp_file);
             move_uploaded_file($tmp_file, './images/posts/' . $file_name);
 
             $img = $file_name;
+            var_dump($img);
             
             $this->viewParams['post'] = Post::createPost( $user_id, $check, $img, $posted );
         }
@@ -23,13 +24,14 @@ class PostController extends BaseController {
 
         $this->viewParams['breeds'] = Breed::getAll();
 
+        $this->viewParams['user'] = User::getById($user_id);
+
         $this->loadView();
     }
 
     protected function detail () {
-        // $this->viewParams['post'] = Post::getAll();
+        // $this->viewParams['post'] = Post::getById();
 
         $this->loadView();
     }
-
 }

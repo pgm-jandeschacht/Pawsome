@@ -18,8 +18,6 @@ class HomeController extends BaseController {
 
         $this->viewParams['upload'] = Replies::createReply( $param, $check, $posted );
 
-        // $this->viewParams['replies'] = Replies::
-
         $this->loadView();
     }
 
