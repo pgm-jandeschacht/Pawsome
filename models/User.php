@@ -25,7 +25,7 @@ class User extends BaseModel {
             // var_dump($user->id);
 
             if($user && password_verify($password_from_form, $user->password)) {
-                $_SESSION['user_id'] = $user->id;
+                $_SESSION['user_id'] = $user->user_id;
                 header('location: /');
             } else {
                 echo 'email en/ of wachtwoord is verkeerd';
